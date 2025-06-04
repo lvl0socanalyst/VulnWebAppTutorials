@@ -19,7 +19,7 @@
 
 --- 
 
-## Steps to Exploit
+## Steps to Exploit MEDIUM
 
 1. Get an IP from your internal network/vlan.
 - In Linux arp -a
@@ -28,6 +28,10 @@
 3. Try all of these. Some work
 4. 192.168.1.1 | cat /etc/passwd
 
+## Steps to Exploit HIGH
+
+1. Use the same IP from before I guess.
+2. Interesting as the .php splits the IP input into four octets and validates the input. 
 
 # [CSRF]
 
@@ -84,6 +88,17 @@
 - This escapes ' " \ NULL so none of these can be used in the SQLi
 2. So instead we will just use 1 OR 1=1
 - 1 because we want the first and last name of user 1. OR 1=1 which is always true.
-- So the query would look like this in the backend $getid = "SELECT first_name, last_name FROM users WHERE user_id = 1 OR 1=1";
-- Which would then set the $id variable to $id=1 OR TRUE
-- Thus returning all the values.
+- So the query would look like this in the backend <pre> $getid = "SELECT first_name, last_name FROM users WHERE user_id = 1 OR 1=1"; </pre>
+- Which would then set the $id variable to <pre> $id=1 OR TRUE </pre>
+- Thus returning all values
+3. Now lets pull some tables
+- I tried using sqlmap but maybe my VM 'Broken Web App OWASP' is buggered idk. Couldn't fingerprint the DB for some reason. So we go manual (rip)
+4. I've just discovered that I'm using DVWA Version 1.8 from 2011.
+5. Alright now I'm running a recent version lets try this again.
+6. 
+
+## Steps to Exploit HIGH
+1. Alright in the .php code we can see mysql_real_escape_string() and stripslashes() added for input validation
+2. Stripslashes() removes the \ character from queries
+3. We can also see is_numeric is called meaning our input will only accept integers
+4. 
