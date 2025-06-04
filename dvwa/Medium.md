@@ -81,3 +81,16 @@
 7. This tricks the web server into running the .php file from our kali machine. Thus, creating a reverse shell. Easy right!
 
 ## Steps to Exploit MEDIUM
+
+# [SQL Injection]
+
+---
+
+## Steps to Exploit MEDIUM
+1. Looking at the .php code we can see that mysql_real_escape_string is used
+- This escapes ' " \ NULL so none of these can be used in the SQLi
+2. So instead we will just use 1 OR 1=1
+- 1 because we want the first and last name of user 1. OR 1=1 which is always true.
+- So the query would look like this in the backend $getid = "SELECT first_name, last_name FROM users WHERE user_id = 1 OR 1=1";
+- Which would then set the $id variable to $id=1 OR TRUE
+- Thus returning all the values.
